@@ -38,6 +38,8 @@
     <string name="display_picture">Display Picture</string>
     <string name="menu_info">Info</string>
     <string name="welcome_text">Welcome to Mobile Attendance</string>
+    <string name="done">Done</string>
+    <string name="clear">Clear</string>
 
     <string-array name="array_role">
         <item>Student</item>

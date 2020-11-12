@@ -3,6 +3,8 @@ package com.mua.mobileattendance
 import android.Manifest
 import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.webkit.WebView
 import android.widget.Toast
 import com.mua.mobileattendance.activity.AuthActivity
 import com.mua.mobileattendance.activity.HomeActivity
@@ -28,8 +30,6 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
     var permissionLocationFine =
         PermissionHelper(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
 
-    var permissionLocationCoarse =
-        PermissionHelper(this@MainActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,6 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
         initLoadingWebView()
 
         //permissionContactsRead.request()
-        permissionLocationCoarse.request()
         permissionLocationFine.request()
 
 
@@ -48,13 +47,11 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
     }
 
     fun initLoadingWebView() {
-        /*
-        val webView :WebView = findViewById(R.id.wv_load)
+        val webView : WebView = findViewById(R.id.wv_load)
         webView.scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
         webView.settings.loadsImagesAutomatically = true
         webView.settings.javaScriptEnabled = true
         webView.loadUrl("file:///android_asset/load.gif")
-        */
     }
 
     private fun preProcess() {
@@ -103,39 +100,7 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        /*
-        permissionContactsRead.onRequestPermissionResult(requestCode, grantResults) {
-            onGranted {}
-            onDenied {
-                Toast
-                    .makeText(context,
-                        "Adding contact to your profile will be manual",
-                        Toast.LENGTH_LONG).
-                    show()
-            }
-        }
-        */
         permissionLocationFine.onRequestPermissionResult(requestCode, grantResults) {
-            onGranted {
-                permissionGranted = true
-                permissionPending = false
-                onAuth()
-            }
-            onDenied { isPermanent ->
-                if (isPermanent) {
-                    showErrorAndExit(
-                        "Without these permissions there is no use of SDAS",
-                        SystemManager.INIT_PERMISSION_FAILED
-                    )
-                } else {
-                    showErrorAndExit(
-                        "Restart SDAS and grant permissions",
-                        SystemManager.INIT_PERMISSION_FAILED
-                    )
-                }
-            }
-        }
-        permissionLocationCoarse.onRequestPermissionResult(requestCode, grantResults) {
             onGranted {
                 permissionGranted = true
                 permissionPending = false
@@ -157,12 +122,13 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
         }
     }
 
-    /*
+
+
+}
+/*
     connect android
     adb start
     adb tcpip 5555
     //adb shell "ip addr show wlan0 | grep -e wlan0$ | cut -d\" \" -f 6 | cut -d/ -f 1"
     adb connect ip_mobile:5555
     */
-
-}

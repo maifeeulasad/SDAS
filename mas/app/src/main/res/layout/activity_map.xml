@@ -14,35 +14,44 @@
         android:layout_height="match_parent"
         tools:context=".activity.MapActivity">
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/smf_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <ImageButton
-            android:id="@+id/ib_clear"
-            visibility="@{map.editable}"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <LinearLayout
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_margin="20dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="0dp"
-            android:background="@drawable/clear" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-        <ImageButton
-            android:id="@+id/ib_done"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:background="@drawable/done" />
+            <ImageButton
+                android:id="@+id/ib_clear"
+                visibility="@{map.editable}"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/clear"
+                android:contentDescription="@string/clear" />
+
+
+            <ImageButton
+                android:id="@+id/ib_done"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/done"
+                android:contentDescription="@string/done" />
+
+        </LinearLayout>
+
+
+
 
     </RelativeLayout>
 
