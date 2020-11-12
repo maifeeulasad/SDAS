@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="join"
+            type="com.mua.mobileattendance.viewmodel.AuthViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="bottom"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".activity.AuthActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_username"
+            app:errorMessage="@{join.usernameError}">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blurry_mint_light"
+                android:focusedByDefault="true"
+                android:inputType="text"
+                android:text="@={join.username}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="@string/enter_password"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blurry_mint_light"
+                android:inputType="textPassword"
+                android:text="@={join.password}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="@string/re_enter_password"
+            app:errorMessage="@{join.rePasswordError}"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blurry_mint_light"
+                android:inputType="textPassword"
+                android:text="@={join.rePassword}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/animation_button"
+            android:enabled="@{join.canSignup}"
+            android:onClick="@{join.join()}"
+            android:text="@string/join" />
+
+    </LinearLayout>
+</layout>

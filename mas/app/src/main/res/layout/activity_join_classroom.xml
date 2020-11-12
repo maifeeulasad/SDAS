@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.mua.mobileattendance.converter.ViewHelper" />
+
+        <variable
+            name="classroom"
+            type="com.mua.mobileattendance.viewmodel.ClassroomViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".activity.JoinClassroomActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Classroom ID : "
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="numberSigned"
+                android:text="@={ViewHelper.longToString(classroom.classroomId)}" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{classroom.join()}"
+            android:text="Join" />
+
+    </LinearLayout>
+
+</layout>

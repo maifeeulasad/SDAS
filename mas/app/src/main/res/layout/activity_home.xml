@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="home"
+            type="com.mua.mobileattendance.viewmodel.HomeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".activity.HomeActivity">
+
+
+        <TextView
+            visibility="@{home.emptyHome}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="You are not in any Classroom\nPlease create or enroll"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            visibility="@{!home.emptyHome}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Classrooms : "
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_classrooms"
+                visibility="@{!home.emptyHome}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            visibility="@{home.searching}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Search result : "
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_classrooms_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+                android:id="@+id/fab_join_classroom"
+                animationDim="@{home.fabExpanded}"
+                visibility="@{home.fabExpanded}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:contentDescription="@string/join_classroom"
+                android:src="@drawable/enter"
+                android:tooltipText="@string/join_classroom" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+                android:id="@+id/fab_create_classroom"
+                animationDim="@{home.fabExpanded}"
+                visibility="@{home.fabExpanded}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:contentDescription="@string/create_classroom"
+                android:src="@drawable/plus"
+                android:tooltipText="@string/create_classroom" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+                android:id="@+id/fab_expand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:contentDescription="@string/expand"
+                android:rotation="270"
+                android:src="@drawable/expand"
+                android:tooltipText="@string/expand" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

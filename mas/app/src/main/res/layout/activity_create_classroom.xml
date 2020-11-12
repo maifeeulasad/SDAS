@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="classroom"
+            type="com.mua.mobileattendance.viewmodel.ClassroomViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".activity.CreateClassroomActivity">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_classroom_name">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusedByDefault="true"
+                android:inputType="text"
+                android:text="@={classroom.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_classroom_details">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@={classroom.details}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/sp_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/array_role" />
+
+        <Button
+            android:id="@+id/bt_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{classroom.canCreate}"
+            android:onClick="@{classroom.create()}"
+            android:text="@string/create_classroom" />
+
+    </LinearLayout>
+
+</layout>

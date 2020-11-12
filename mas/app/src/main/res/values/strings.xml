@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_simple_name">Attendance System</string>
+    <string name="app_name">SDAS</string>
+    <string name="enter_username">Please enter username</string>
+    <string name="enter_password">Please enter password</string>
+    <string name="re_enter_password">Please enter the same password again</string>
+    <string name="join">Join</string>
+    <string name="login">Login</string>
+    <string name="create_classroom">Create classroom</string>
+    <string name="enter_classroom_name">Enter classroom name</string>
+    <string name="enter_classroom_details">Enter classroom details</string>
+    <string name="edit_classroom">Edit classroom</string>
+    <string name="add_new_session">Add new session</string>
+    <string name="expand">Expand</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="join_classroom">Join classroom</string>
+    <string name="manage_member">Manage member</string>
+    <string name="join_or_add_member">Join or Add member</string>
+    <string name="enter_weight">Please enter weight</string>
+    <string name="enter_minute">Please enter minute</string>
+    <string name="enter_code">Please enter code</string>
+    <string name="classroom_id">Classroom ID :</string>
+    <string name="classroom_name">Classroom Name :</string>
+    <string name="classroom_details">Classroom Details :</string>
+    <string name="next_session_time">Next session time</string>
+    <string name="pick_next_session_time">Pick next session time</string>
+    <string name="sessions">Sessions</string>
+    <string name="user_and_roles">User and Roles</string>
+    <string name="user_id">User ID :</string>
+    <string name="username">Username :</string>
+    <string name="joining_date">Joining Date :</string>
+    <string name="name">Name :</string>
+    <string name="email">Email :</string>
+    <string name="contacts">Contacts :</string>
+    <string name="save">Save</string>
+    <string name="display_picture">Display Picture</string>
+    <string name="menu_info">Info</string>
+    <string name="welcome_text">Welcome to Mobile Attendance</string>
+
+    <string-array name="array_role">
+        <item>Student</item>
+        <item>CR</item>
+        <item>Teacher</item>
+    </string-array>
+
+    <string-array name="array_role_edit">
+        <item>Pending</item>
+        <item>Student</item>
+        <item>CR</item>
+        <item>Teacher</item>
+    </string-array>
+
+    <string-array name="array_attendance_edit">
+        <item>Pending</item>
+        <item>Accepted</item>
+        <item>Rejected</item>
+    </string-array>
+
+
+</resources>

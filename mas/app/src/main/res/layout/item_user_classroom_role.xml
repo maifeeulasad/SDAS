@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/lightest_gray"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User ID : "
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/tv_item_ucr_user_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username : "
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/tv_item_ucr_user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Role : "
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/tv_item_ucr_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+            <Spinner
+                android:id="@+id/sp_item_ucr_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/array_role_edit" />
+
+        </TableRow>
+
+    </TableLayout>
+</androidx.cardview.widget.CardView>

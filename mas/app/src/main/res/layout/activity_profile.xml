@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profile"
+            type="com.mua.mobileattendance.viewmodel.ProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_auth"
+        android:orientation="vertical"
+        tools:context=".activity.ProfileActivity">
+
+        <ImageButton
+            android:id="@+id/iv_dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/avatar"
+            android:contentDescription="@string/display_picture" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_id"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.user.userId.toString()}"
+                    android:textSize="22sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.user.username}"
+                    android:textSize="22sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/joining_date"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.user.joiningDate.toGMTString()}"
+                    android:textSize="22sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="22sp" />
+
+                <TextView
+                    visibility="@{!profile.editable}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.user.name}"
+                    android:textSize="22sp" />
+
+                <EditText
+                    visibility="@{profile.editable}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="Name"
+                    android:inputType="text"
+                    android:text="@={profile.user.name}" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textSize="22sp" />
+
+                <TextView
+                    visibility="@{!profile.editable}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.user.email}"
+                    android:textSize="22sp" />
+
+                <EditText
+                    visibility="@{profile.editable}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="some@gmail.com"
+                    android:inputType="textEmailAddress"
+                    android:text="@={profile.user.email}" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contacts"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{profile.contacts()}"
+                    android:textSize="22sp" />
+
+            </TableRow>
+
+            <Button
+                visibility="@{profile.editable}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{profile.save()}"
+                android:text="@string/save" />
+
+        </TableLayout>
+
+    </LinearLayout>
+</layout>

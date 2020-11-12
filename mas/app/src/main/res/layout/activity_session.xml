@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.mua.mobileattendance.converter.ViewHelper" />
+
+        <variable
+            name="session"
+            type="com.mua.mobileattendance.viewmodel.SessionViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".activity.SessionActivity">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Creation Time : "
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{session.sessionDto.creationTime.toGMTString()}"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Weight : "
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:visibility="@{!session.sessionEditing}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{session.sessionDto.weight.toString()}"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:visibility="@{!session.sessionEditing}" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/enter_weight"
+                    app:visibility="@{session.sessionEditing}">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusedByDefault="true"
+                        android:inputType="numberSigned"
+                        android:text="@={ViewHelper.longToString(session.sessionDto.weight)}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Minute : "
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:visibility="@{!session.sessionEditing}" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{session.sessionDto.minutes.toString()}"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:visibility="@{!session.sessionEditing}" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/enter_minute"
+                    app:visibility="@{session.sessionEditing}">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned"
+                        android:text="@={ViewHelper.longToString(session.sessionDto.minutes)}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/enter_code"
+                    app:visibility="@{session.sessionAttend}">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned"
+                        android:text="@={session.sessionDto.code}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bounds : "
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_map"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{ViewHelper.selectOrViewBoundary(session.sessionEditing)}" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btn_session_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{session.createOrAttendSession()}"
+            android:text="@{ViewHelper.createOrAttendSession(session.sessionEditing)}" />
+
+        <Button
+            android:id="@+id/btn_attendance_edit"
+            visibility="@{session.isTeacher}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Attendances" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_session_parent"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_attendances"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+</layout>
