@@ -103,6 +103,16 @@ open class BaseActivity : AppCompatActivity(), LifecycleObserver {
         startActivity(intent)
     }
 
+    fun showErrorAndExit(message: String, errorCode: Int) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        finish()
+
+        Thread {
+            Thread.sleep(2 * 1000)
+            System.exit(errorCode)
+        }.start()
+    }
+
     /*
     fun setFullScreen(){
         getWindow()

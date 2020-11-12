@@ -86,16 +86,6 @@ class MainActivity : BaseActivity(), RetrofitResponseListener {
         }
     }
 
-    fun showErrorAndExit(message: String, errorCode: Int) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-        finish()
-
-        Thread {
-            sleep(2 * 1000)
-            System.exit(errorCode)
-        }.start()
-    }
-
     fun onAuth() {
         if (authenticated && permissionGranted) {
             startHome()

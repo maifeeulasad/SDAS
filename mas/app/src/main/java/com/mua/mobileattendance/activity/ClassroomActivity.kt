@@ -361,6 +361,7 @@ class ClassroomActivity :
         val bundle = Bundle()
         bundle.putLong("userid", userClassroomRoleDto!!.userId)
         intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     override fun onLongClick(userClassroomRoleDto: UserClassroomRoleDto?) {
